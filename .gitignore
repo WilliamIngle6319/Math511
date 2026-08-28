@@ -1,4 +1,10 @@
-.ipynb_checkpoints/
+﻿.ipynb_checkpoints/
 __pycache__/
 Thumbs.db
 desktop.ini
+*.7z
+*.mlt
+*.xopp
+*.mkv
+*.mp4
+ch1/3/8970578-aam.pdf
