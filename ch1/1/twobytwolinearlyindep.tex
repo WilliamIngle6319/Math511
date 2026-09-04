@@ -1,0 +1,52 @@
+\documentclass[tikz,convert={size=640,density=300}]{standalone}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{pgfplots}
+\usepackage{pgfplotstable}
+\usetikzlibrary{decorations.pathmorphing}
+\usetikzlibrary{arrows}
+\usetikzlibrary{calc}
+\definecolor{pantone2727}{RGB}{48,127,226}
+\definecolor{mymagenta}{RGB}{236,0,140}
+%\usetikzlibrary{...}% tikz package already loaded by 'tikz' option
+\pgfplotsset{compat = newest}
+
+\begin{document}
+
+\def\xmin{-5}
+\def\xmax{5}
+\def\ymin{-2}
+\def\ymax{5}
+\def\xnomass{-0.5}
+\def\xequil{-2}
+\def\xcomp{0}
+\def\xstretch{2}
+
+    \begin{tikzpicture}[
+    spring/.style 2 args={decoration={zigzag, segment length=#1, amplitude=#2},decorate,color=pantone2727},
+    coil/.style 2 args={decoration={coil, segment length=#1, amplitude=#2},decorate,color=tulip}
+        ]
+
+        \draw[help lines, color=gray!90, dashed] (\xmin - 0.3,\ymin - 0.3) grid (\xmax + 0.3,\ymax + 0.3);
+        \draw[->, thick] (\xmin,0)--(\xmax,0) node[below right]{$x_1$};
+        \draw[->, thick] (0,\ymin)--(0,\ymax) node[above left]{$x_2$};
+
+        \draw[<->,domain=-2:\xmax,samples=400,smooth,variable=\x,color=pantone2727,thick] plot ({\x},{-\x + 3});
+        \draw[<->,domain=-3:4,samples=400,smooth,variable=\x,color=pantone2727,thick] plot ({\x},{\x + 1});
+
+        \fill[color=mymagenta] (1,2) circle[radius=0.05];
+        \node[color=black,below] at (1,1.70) {\large $(1,2)$};
+        \node[color=black,below] at (0,\ymax + 1) {\large One Solution};
+
+%        \fill[color=pantone2727] (1,{1/(1-0.5*exp(-1))}) circle[radius=0.05];
+%        \fill[color=pantone2727] (2,2.5) circle[radius=0.05];
+%        \draw[color=pantone2727] (1,0.5) circle[radius=0.05];
+%        \draw[color=pantone2727] (2,1.5) circle[radius=0.05];
+%        \draw[color=pantone2727] (2,{sin(2 r) + 1.1}) circle[radius=0.05];
+%        \draw[color=pantone2727] (3,{sin(3 r) + 1.1}) circle[radius=0.05];
+
+%        \node at (-1,0) {(};
+%        \node at (1,0) {)};
+
+    \end{tikzpicture}
+\end{document} 
